@@ -8,7 +8,12 @@
     "start": "node build/index.js",
     "build": "tsc",
     "dev": "ts-node-dev --no-notify src/index.ts",
-    "format": "prettier --check 'src/*/*.{js,ts,tsx}'"
+    "format": "prettier --check 'src/*/*.{js,ts,tsx}'",
+    "migrate-make": "knex --knexfile ./database/knexfile.js migrate:make",
+    "migrate-down": "knex --knexfile ./database/knexfile.js migrate:down",
+    "migrate-latest": "knex --knexfile ./database/knexfile.js migrate:latest",
+    "migrate-rollback": "knex --knexfile ./database/knexfile.js migrate:rollback",
+    "migrate-up": "knex --knexfile ./database/knexfile.js migrate:up"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
@@ -25,10 +30,13 @@
   },
   "dependencies": {
     "@ev-fns/openapi": "^0.3.2",
+    "@types/node": "^17.0.0",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "dotenv-safe": "^8.2.0",
     "express": "^4.17.1",
-    "morgan": "^1.10.0"
+    "knex": "^0.95.14",
+    "morgan": "^1.10.0",
+    "pg": "^8.7.1"
   }
 }
